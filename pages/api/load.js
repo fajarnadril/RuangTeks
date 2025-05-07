@@ -2,7 +2,7 @@ export default async function handler(req, res) {
   try {
     const token = process.env.GITHUB_TOKEN;
     const response = await fetch(
-      "https://api.github.com/repos/fajarbinus/RuangTeks/contents/data.json",
+      "https://api.github.com/repos/fajarnadril/RuangTeks/contents/data.json",
       {
         headers: { Authorization: `Bearer ${token}` },
         cache: 'no-store'
