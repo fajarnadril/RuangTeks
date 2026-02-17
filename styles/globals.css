@@ -2,9 +2,64 @@
 body {
 	background: #1e1e1e;
 	color: #d4d4d4;
-	font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace;
+	font-family: 'Plus Jakarta Sans', 'JetBrains Mono', 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace;
 	margin: 0;
 	padding: 0;
+}
+
+/* Light mode (follows browser preference) */
+@media (prefers-color-scheme: light) {
+	body {
+		background: #f5f5f5;
+		color: #333;
+	}
+	.editor-app {
+		background: #f5f5f5;
+	}
+	.editor-toolbar {
+		background: #ffffff;
+		border-bottom: 1px solid #e0e0e0;
+	}
+	.editor-title {
+		color: #007acc;
+	}
+	.editor-btn {
+		background: #ffffff;
+		color: #333;
+		border: 1px solid #ddd;
+	}
+	.editor-btn.primary {
+		background: #007acc;
+		color: #fff;
+		border: 1px solid #007acc;
+	}
+	.editor-btn:not(:disabled):hover {
+		background: #f0f0f0;
+		border: 1px solid #007acc;
+	}
+	.editor-btn.primary:not(:disabled):hover {
+		background: #005fa3;
+	}
+	.editor-textarea {
+		background: #ffffff;
+		color: #333;
+	}
+	.editor-textarea:focus {
+		background: #ffffff;
+	}
+	.editor-viewmode {
+		background: #ffffff;
+		color: #333;
+		border: 1px solid #ddd;
+	}
+	.editor-viewmode a {
+		color: #007acc;
+	}
+	.editor-footer {
+		background: #ffffff;
+		border-top: 1px solid #e0e0e0;
+		color: #666;
+	}
 }
 
 .editor-app {
@@ -21,8 +76,11 @@ body {
 	justify-content: space-between;
 	background: #23272e;
 	padding: 0.5rem 1.5rem;
-	border-bottom: 1px solid #333;
+	border-bottom: 1px solid #222;
 	box-shadow: 0 2px 8px 0 #0002;
+	position: sticky;
+	top: 0;
+	z-index: 10;
 }
 
 .editor-title {
@@ -48,12 +106,12 @@ body {
 	background: #23272e;
 	color: #d4d4d4;
 	border: 1px solid #333;
-	border-radius: 4px;
-	padding: 0.4rem 1.2rem;
+	border-radius: 6px;
+	padding: 0.45rem 1.4rem;
 	font-size: 1rem;
 	font-family: inherit;
 	cursor: pointer;
-	transition: background 0.2s, color 0.2s;
+	transition: background 0.2s, color 0.2s, border 0.2s;
 }
 .editor-btn.primary {
 	background: #007acc;
@@ -65,8 +123,9 @@ body {
 	cursor: not-allowed;
 }
 .editor-btn:not(:disabled):hover {
-	background: #333;
+	background: #2a2a2a;
 	color: #fff;
+	border: 1px solid #007acc;
 }
 .editor-btn.primary:not(:disabled):hover {
 	background: #005fa3;
@@ -93,12 +152,14 @@ body {
 	border-radius: 0;
 	font-size: 1.1rem;
 	font-family: inherit;
-	padding: 1.2rem 1rem;
+	padding: 1.2rem 1rem 1.2rem 1.5rem;
 	box-shadow: none;
 	resize: none;
 	outline: none;
-	transition: border 0.2s;
+	transition: outline 0.2s;
 	box-sizing: border-box;
+	line-height: 1.6;
+	letter-spacing: 0.01em;
 }
 .editor-textarea:focus {
 	border: none;
@@ -109,10 +170,38 @@ body {
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
 	}
+	.editor-footer {
+		text-align: center;
+		padding: 0.6rem 0.5rem;
+	}
 	.editor-textarea {
 		font-size: 1rem;
-		padding: 0.8rem 0.5rem;
+		padding: 0.8rem 0.5rem 0.8rem 0.8rem;
 	}
+}
+
+/* View mode styling */
+.editor-viewmode {
+	background: #23272e;
+	color: #d4d4d4;
+	font-family: inherit;
+	font-size: 1.1rem;
+	padding: 1.2rem 1rem 1.2rem 1.5rem;
+	border-radius: 0;
+	overflow-y: auto;
+	white-space: pre-wrap;
+	word-break: break-word;
+	min-height: 300px;
+	line-height: 1.6;
+	letter-spacing: 0.01em;
+	border: 1px solid #333;
+}
+.editor-viewmode a {
+	color: #4fc3f7;
+	text-decoration: underline;
+}
+.editor-viewmode a:hover {
+	color: #81d4fa;
 }
 
 .editor-loading {
@@ -122,11 +211,12 @@ body {
 }
 
 .editor-footer {
-	text-align: center;
-	font-size: 0.95rem;
-	color: #888;
+	text-align: right;
+	font-size: 0.9rem;
+	color: #555;
 	background: #23272e;
 	border-top: 1px solid #333;
-	padding: 1rem 0;
+	padding: 0.6rem 1.5rem 0.6rem 0.5rem;
 	letter-spacing: 0.5px;
+	user-select: none;
 }
