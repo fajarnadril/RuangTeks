@@ -1,5 +1,7 @@
 
+
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 
 export default function Home() {
   const [text, setText] = useState('');
@@ -30,92 +32,41 @@ export default function Home() {
     }
   };
 
-  const styles = {
-    container: {
-      fontFamily: 'sans-serif',
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      backgroundColor: '#f8f9fa',
-      padding: '2rem'
-    },
-    main: {
-      maxWidth: '700px',
-      width: '100%',
-      margin: '0 auto'
-    },
-    title: {
-      fontSize: '2rem',
-      fontWeight: '600',
-      marginBottom: '1rem',
-      textAlign: 'center'
-    },
-    textarea: {
-      width: '100%',
-      padding: '1rem',
-      fontSize: '1rem',
-      borderRadius: '0.3rem',
-      border: '1px solid #ced4da',
-      marginBottom: '1rem',
-      resize: 'vertical'
-    },
-    buttonGroup: {
-      display: 'flex',
-      justifyContent: 'center',
-      gap: '1rem'
-    },
-    button: {
-      padding: '0.5rem 1.5rem',
-      fontSize: '1rem',
-      borderRadius: '0.3rem',
-      border: '1px solid transparent',
-      backgroundColor: '#007bff',
-      color: 'white',
-      cursor: 'pointer',
-      transition: 'background-color 0.3s ease'
-    },
-    footer: {
-      textAlign: 'center',
-      fontSize: '0.9rem',
-      color: '#6c757d',
-      marginTop: '2rem',
-      borderTop: '1px solid #dee2e6',
-      paddingTop: '1rem'
-    }
-  };
+  // Styling moved to globals.css for editor-like look
 
   return (
-    <div style={styles.container}>
-      <main style={styles.main}>
-        <h1 style={styles.title}>✨ Ruang Teks</h1>
-        {loading ? (
-          <p style={{ textAlign: 'center' }}>Memuat...</p>
-        ) : (
-          <>
+    <>
+      <Head>
+        <title>Ruang Teks Editor</title>
+      </Head>
+      <div className="editor-app">
+        <div className="editor-toolbar">
+          <span className="editor-title">Ruang Teks <span className="editor-dot">●</span></span>
+          <div className="editor-actions">
+            <button className="editor-btn primary" onClick={saveText}>Simpan</button>
+            <button className="editor-btn" onClick={loadText} disabled={loading}>
+              {loading ? 'Memuat...' : 'Load'}
+            </button>
+          </div>
+        </div>
+        <div className="editor-main">
+          {loading ? (
+            <div className="editor-loading">Memuat...</div>
+          ) : (
             <textarea
-              rows="10"
+              className="editor-textarea"
+              rows="18"
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder="Tulis sesuatu di sini..."
-              style={styles.textarea}
+              spellCheck={false}
             />
-            <div style={styles.buttonGroup}>
-              <button style={styles.button} onClick={saveText}>Simpan</button>
-              <button
-                style={{ ...styles.button, backgroundColor: '#6c757d' }}
-                onClick={loadText}
-                disabled={loading}
-              >
-                {loading ? 'Memuat...' : 'Load'}
-              </button>
-            </div>
-          </>
-        )}
-      </main>
-      <footer style={styles.footer}>
-        Dibuat oleh <strong>fajarnadril</strong> dengan 🤖 
-      </footer>
-    </div>
+          )}
+        </div>
+        <footer className="editor-footer">
+          Dibuat oleh <strong>fajarnadril</strong> dengan 🤖
+        </footer>
+      </div>
+    </>
   );
 }

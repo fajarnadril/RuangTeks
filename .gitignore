@@ -1,1 +1,21 @@
-.env.local.example
+
+# Node modules
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Local env files
+.env*
+
+# System files
+*.log
+*.DS_Store
+Thumbs.db
+
+# VSCode settings
+.vscode/
+
+# Data file (jika tidak ingin di-commit)
+data.json
