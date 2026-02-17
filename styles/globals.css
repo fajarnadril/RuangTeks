@@ -150,20 +150,21 @@ body {
 	color: #d4d4d4;
 	border: none;
 	border-radius: 0;
-	font-size: 1.1rem;
-	font-family: inherit;
+	font-size: 14px;
+	font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace;
 	padding: 1.2rem 1rem 1.2rem 1.5rem;
 	box-shadow: none;
 	resize: none;
 	outline: none;
 	transition: outline 0.2s;
 	box-sizing: border-box;
-	line-height: 1.6;
+	line-height: 1.5;
 	letter-spacing: 0.01em;
 }
 .editor-textarea:focus {
 	border: none;
 	outline: 2px solid #007acc;
+	color: #505050;
 }
 @media (max-width: 600px) {
 	.editor-toolbar, .editor-footer {
@@ -184,17 +185,19 @@ body {
 .editor-viewmode {
 	background: #23272e;
 	color: #d4d4d4;
-	font-family: inherit;
-	font-size: 1.1rem;
+	font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace;
+	font-size: 14px;
 	padding: 1.2rem 1rem 1.2rem 1.5rem;
 	border-radius: 0;
 	overflow-y: auto;
 	white-space: pre-wrap;
 	word-break: break-word;
-	min-height: 300px;
-	line-height: 1.6;
+	min-height: 0;
+	height: 100%;
+	line-height: 1.5;
 	letter-spacing: 0.01em;
-	border: 1px solid #333;
+	border: none;
+	box-sizing: border-box;
 }
 .editor-viewmode a {
 	color: #4fc3f7;
@@ -218,5 +221,5 @@ body {
 	border-top: 1px solid #333;
 	padding: 0.6rem 1.5rem 0.6rem 0.5rem;
 	letter-spacing: 0.5px;
-	user-select: none;
+	
 }
