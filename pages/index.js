@@ -49,7 +49,8 @@ export default function Home() {
           if (!part) return null;
           if (urlRegex.test(part)) {
             const href = part.startsWith('http') ? part : `https://${part}`;
-            return <a key={j} href={href} target="_blank" rel="noopener noreferrer" style={{color:'#4fc3f7',textDecoration:'underline'}}>{part}</a>;
+            // Tampilkan teks "link" untuk semua URL
+            return <a key={j} href={href} target="_blank" rel="noopener noreferrer" style={{color:'#4fc3f7',textDecoration:'underline'}}>link</a>;
           }
           return <span key={j}>{part}</span>;
         })}
